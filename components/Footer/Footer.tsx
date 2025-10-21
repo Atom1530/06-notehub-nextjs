@@ -1,8 +1,6 @@
+import css from './Footer.module.css';
 
-
-import css from './Footer.module.css'
-
-const devName = "Samir Sharif";
+const devName = 'Samir Sharif';
 
 export default function Footer() {
   return (
