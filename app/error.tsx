@@ -1,3 +1,4 @@
+// app/error.tsx
 'use client';
 
 import { useQueryClient } from '@tanstack/react-query';

@@ -17,8 +17,11 @@ interface NotesResponse {
 
 
 // запит для отримання колекції нотаток
-export async function fetchNotes(search: string, page: number): Promise<NotesResponse> {
-  const params = { perPage: 12, search, page, sortBy: "created" };
+export async function fetchNotes(search: string, page: number, tag?: string): Promise<NotesResponse> {
+  const params:Record<string, string | number> = { perPage: 12, search, page, sortBy: "created" };
+    if (tag) {
+    params.tag = tag;
+  }
   const { data } = await api.get<NotesResponse>("/notes", { params });
   return data;
 }

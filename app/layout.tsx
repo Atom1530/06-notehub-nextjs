@@ -1,9 +1,11 @@
+// app/layout
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import { Toaster } from 'react-hot-toast';
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -21,8 +23,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -31,6 +35,7 @@ export default function RootLayout({
           <Toaster />
           <Header />
           {children}
+          {modal}
           <Footer />
         </TanStackProvider>
       </body>

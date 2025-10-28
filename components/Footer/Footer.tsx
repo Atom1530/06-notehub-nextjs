@@ -11,7 +11,7 @@ export default function Footer() {
           <p>Developer: {devName}</p>
           <p>
             Contact us:
-            <a href="mailto:student@notehub.app"> student@notehub.app</a>
+            <a href="mailto:samirsharif6969@gmail.com"> samirsharif6969@gmail.com</a>
           </p>
         </div>
       </div>

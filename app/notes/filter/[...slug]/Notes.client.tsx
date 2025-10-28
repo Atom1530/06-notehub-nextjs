@@ -1,4 +1,4 @@
-// app/notes/Notes.client.tsx
+// app/notes/[...slug]/Notes.client.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -13,11 +13,17 @@ import Modal from '@/components/Modal/Modal';
 import NoteForm from '@/components/NoteForm/NoteForm';
 import Pagination from '@/components/Pagination/Pagination';
 import css from './Notes.module.css';
+import { NoteTag } from '@/types/note';
 
-export default function NotesClient() {
+interface Props {
+  initialTag?: NoteTag;
+}
+
+export default function NotesClient({ initialTag }: Props) {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
+  const tag = initialTag;
 
   const handleSearch = useDebouncedCallback((value: string) => {
     setSearch(value);
@@ -25,10 +31,9 @@ export default function NotesClient() {
   }, 400);
 
   const { data, isLoading, isError, isFetching } = useQuery({
-    queryKey: ['notes', search, page],
-    queryFn: () => fetchNotes(search, page),
+    queryKey: ['notes', search || undefined, page, tag],
+    queryFn: () => fetchNotes(search, page, tag),
     placeholderData: keepPreviousData,
-    // refetchOnMount: false,
     retry: false,
     throwOnError: true,
   });

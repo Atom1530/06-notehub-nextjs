@@ -1,9 +1,9 @@
 // app/page.tsx
 
-import css from '@/components/Home/HomePage.module.css';
+import css from './page.module.css';
 export default function MainPage() {
   return (
-    <main>
+    <main className={css.page}>
       <div className={css.container}>
         <h1 className={css.title}>Welcome to NoteHub</h1>
         <p className={css.description}>
